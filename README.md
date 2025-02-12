@@ -1,54 +1,104 @@
-<header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f0f0;
+            color: #6a4f4d;
+            text-align: center;
+            margin-top: 10%;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<!--
-  <<< Author notes: Course header >>>
-  Include a 1280×640 image, course title in sentence case, and a concise description in emphasis.
-  In your repository settings: enable template repository, add your 1280×640 social image, auto delete head branches.
-  Add your open source license, GitHub uses MIT license.
--->
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 48px;
+            color: #d94f4f;
+            margin-bottom: 30px;
+        }
 
-# GitHub Pages
+        button {
+            font-family: 'Roboto', sans-serif;
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
 
-_Create a site or blog from your GitHub repositories with GitHub Pages._
+        #yes {
+            background-color: #ff6699;
+            color: white;
+        }
 
-</header>
+        #no {
+            background-color: #ffcc00;
+            color: white;
+        }
 
-<!--
-  <<< Author notes: Step 1 >>>
-  Choose 3-5 steps for your course.
-  The first step is always the hardest, so pick something easy!
-  Link to docs.github.com for further explanations.
-  Encourage users to open new tabs for steps!
--->
+        button:hover {
+            opacity: 0.8;
+            transform: scale(1.05);
+        }
 
-## Step 1: Enable GitHub Pages
+        #heart {
+            display: none;
+            font-size: 150px;
+            color: red;
+            margin-top: 50px;
+        }
 
-_Welcome to GitHub Pages and Jekyll :tada:!_
+        #gif {
+            display: none;
+            margin-top: 30px;
+        }
 
-The first step is to enable GitHub Pages on this [repository](https://docs.github.com/en/get-started/quickstart/github-glossary#repository). When you enable GitHub Pages on a repository, GitHub takes the content that's on the main branch and publishes a website based on its contents.
+        #message {
+            position: relative;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
 
-### :keyboard: Activity: Enable GitHub Pages
+    <div id="message">
+        <h1>Bailey, will you be my Valentine?</h1>
+        <button id="yes" onclick="yesClicked()">Yes</button>
+        <button id="no" onclick="noClicked()">No</button>
+    </div>
+    
+    <div id="heart">❤️</div>
+    <div id="gif">
+        <img src="https://media.giphy.com/media/Idv6CCs0F1dc4/giphy.gif" alt="Valentine's Day Gif" width="300" height="300">
+    </div>
 
-1. Open a new browser tab, and work on the steps in your second tab while you read the instructions in this tab.
-1. Under your repository name, click **Settings**.
-1. Click **Pages** in the **Code and automation** section.
-1. Ensure "Deploy from a branch" is selected from the **Source** drop-down menu, and then select `main` from the **Branch** drop-down menu.
-1. Click the **Save** button.
-1. Wait about _one minute_ then refresh this page (the one you're following instructions from). [GitHub Actions](https://docs.github.com/en/actions) will automatically update to the next step.
-   > Turning on GitHub Pages creates a deployment of your repository. GitHub Actions may take up to a minute to respond while waiting for the deployment. Future steps will be about 20 seconds; this step is slower.
-   > **Note**: In the **Pages** of **Settings**, the **Visit site** button will appear at the top. Click the button to see your GitHub Pages site.
+    <script>
+        function yesClicked() {
+            // Hide the message and buttons
+            document.getElementById('message').style.display = 'none';
+            document.getElementById('heart').style.display = 'block';  // Show the heart
+            document.getElementById('gif').style.display = 'block';    // Show the gif
+        }
 
-<footer>
+        function noClicked() {
+            const buttonNo = document.getElementById('no');
+            // Randomly move the "No" button to a new position on the screen
+            const x = Math.random() * (window.innerWidth - buttonNo.offsetWidth);
+            const y = Math.random() * (window.innerHeight - buttonNo.offsetHeight);
 
-<!--
-  <<< Author notes: Footer >>>
-  Add a link to get support, GitHub status page, code of conduct, license link.
--->
+            buttonNo.style.position = 'absolute';
+            buttonNo.style.left = `${x}px`;
+            buttonNo.style.top = `${y}px`;
+        }
+    </script>
 
----
+</body>
+</html>
 
-Get help: [Post in our discussion board](https://github.com/orgs/skills/discussions/categories/github-pages) &bull; [Review the GitHub status page](https://www.githubstatus.com/)
-
-&copy; 2023 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
-
-</footer>
